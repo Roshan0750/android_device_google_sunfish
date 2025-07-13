@@ -14,16 +14,27 @@
 # limitations under the License.
 #
 
-$(call inherit-product, device/google/bonito/hentai_common.mk)
-$(call inherit-product, device/google/bonito/device-bonito.mk)
+$(call inherit-product, device/google/sunfish/hentai_common.mk)
+$(call inherit-product, device/google/sunfish/device-sunfish.mk)
+
+# Inherit some common hentai stuff.
+$(call inherit-product, vendor/hentai/config/common_full_phone.mk)
 
 PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := google
-PRODUCT_NAME := bonito
-PRODUCT_DEVICE := bonito
-PRODUCT_MODEL := Pixel 3a XL
+PRODUCT_NAME := sunfish
+PRODUCT_DEVICE := sunfish
+PRODUCT_MODEL := Pixel 4a
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2340
+TARGET_SCREEN_WIDTH := 1080
+TARGET_BOOT_ANIMATION_RES := 1080
+
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="bonito-user 12 SP2A.220505.008 8782922 release-keys"
+    BuildDesc="sunfish-user 13 TQ3A.230805.001.S1 10786265 release-keys" \
+    BuildFingerprint=google/sunfish/sunfish:13/TQ3A.230805.001.S1/10786265:user/release-keys \
+    DeviceProduct=sunfish
 
-BUILD_FINGERPRINT := google/bonito/bonito:12/SP2A.220505.008/8782922:user/release-keys
+$(call inherit-product, vendor/google/sunfish/sunfish-vendor.mk)
